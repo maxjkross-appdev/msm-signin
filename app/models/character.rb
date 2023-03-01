@@ -12,4 +12,6 @@
 class Character < ApplicationRecord
   belongs_to(:movie, { :required => true, :class_name => "Movie", :foreign_key => "movie_id" })
   belongs_to(:actor, { :required => true, :class_name => "Actor", :foreign_key => "actor_id" })
+
+  has_many(:cast, {:through => :characters, :source => :actor})
 end

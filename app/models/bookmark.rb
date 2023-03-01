@@ -9,4 +9,7 @@
 #  user_id    :integer
 #
 class Bookmark < ApplicationRecord
+  has_many(:bookmarks, { :class_name => "Bookmark", :foreign_key => "user_id", :dependent => :destroy })
+
+  belongs_to(:movie, { :required => true, :class_name => "Movie", :foreign_key => "movie_id" })
 end
